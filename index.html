@@ -308,6 +308,47 @@
   .barras { display: flex; align-items: flex-end; gap: 6px; height: 54px; margin-top: 6px; }
   .barras i { flex: 1; background: var(--laranja); border-radius: 3px 3px 0 0; opacity: .85; }
 
+  /* SHIFT Core — galeria do estúdio de Pilates */
+  .core { background: var(--concreto); color: var(--carvao); color-scheme: light; padding-bottom: clamp(24px, 3vw, 40px); }
+  .core .label { color: var(--laranja-escuro); }
+  .core .display .it { color: var(--laranja-escuro); }
+  .core-cab { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px 72px; align-items: end; margin-bottom: clamp(32px, 4vw, 48px); }
+  .core-cab .h2 { margin-top: 18px; }
+  .core-lado { display: grid; gap: 20px; }
+  .core-lado p { color: var(--tinta-2); max-width: 32em; }
+  .core-lado .nota-core { font-size: 13px; }
+  .core-ctrl { display: flex; align-items: center; gap: 14px; }
+  .seta {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1.5px solid var(--carvao); background: transparent; color: var(--carvao);
+    display: grid; place-items: center; cursor: pointer; transition: background .2s, color .2s;
+  }
+  .seta:hover { background: var(--carvao); color: var(--giz); }
+  .seta:disabled { opacity: .3; cursor: default; background: transparent; color: var(--carvao); }
+  .seta .chev { width: 10px; height: 16px; }
+  .seta.ant .chev { transform: scaleX(-1); }
+  .contador { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: 22px; letter-spacing: .06em; font-variant-numeric: tabular-nums; min-width: 4.6em; text-align: center; }
+  .core-trilho {
+    --lateral: max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+    display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-inline: var(--lateral); scroll-padding-inline: var(--lateral);
+    padding-bottom: 8px; scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .core-trilho::-webkit-scrollbar { display: none; }
+  .core-trilho::after { content: ""; flex: 0 0 1px; }
+  .core-slide { position: relative; flex: 0 0 min(78vw, 920px); margin: 0; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; scroll-snap-align: start; background: var(--concreto-linha); }
+  .core-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .core-slide figcaption {
+    position: absolute; left: 16px; bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px; border-radius: 999px;
+    background: rgba(33, 26, 20, .82); color: var(--giz);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    font-family: var(--f-cond); font-stretch: 75%; font-weight: 700; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase;
+  }
+  .core-slide figcaption::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--laranja); }
+  .indice .acesso a { color: var(--laranja-txt); font-weight: 600; white-space: nowrap; }
+
   /* ---------- capítulo claro: planos e avulsos ---------- */
   .claro { background: var(--concreto); color: var(--carvao); color-scheme: light; }
   .claro .label { color: var(--laranja-escuro); }
@@ -513,7 +554,7 @@
     .nav-links a:not(.btn) { display: none; }
   }
   @media (max-width: 900px) {
-    .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
+    .chegada .topo, .core-cab, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
     .indice > li { grid-template-columns: 1fr; grid-template-rows: auto; gap: 8px; }
     .indice .nome, .indice .tipo, .indice .info { grid-column: auto; grid-row: auto; }
     .exp { grid-template-columns: 1fr; }
@@ -527,6 +568,7 @@
     .papeis { grid-template-columns: 1fr; }
     .equipe-grid { grid-template-columns: 1fr; }
     .equipe .foto { aspect-ratio: 4 / 3; }
+    .core-slide { flex-basis: 86vw; }
     .galeria { height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
     .galeria .foto { aspect-ratio: 4 / 3; }
     .galeria .foto:first-child { grid-row: auto; grid-column: span 2; aspect-ratio: 16 / 10; }
@@ -658,7 +700,7 @@
       <div class="painel-pilar" id="pilar-equilibrar" role="tabpanel" aria-labelledby="aba-equilibrar" hidden>
         <p class="pilar-intro">Pilates e nutrição para o que acontece fora do treino.</p>
         <ul class="indice">
-          <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Core</span><span class="tipo">Pilates</span><div class="info"><p class="desc">Nosso estúdio exclusivo de Pilates. Um ambiente moderno e acolhedor, pensado para movimento, consciência corporal e cuidado integral.</p><p class="acesso"><span>Como acessar</span>Pacotes de 1x ou 2x por semana. Horários com a nossa recepção.</p></div></li>
+          <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Core</span><span class="tipo">Pilates</span><div class="info"><p class="desc">Nosso estúdio exclusivo de Pilates. Um ambiente moderno e acolhedor, pensado para movimento, consciência corporal e cuidado integral.</p><p class="acesso"><span>Como acessar</span>Pacotes de 1x ou 2x por semana. Horários com a nossa recepção. <a href="#core">Ver o estúdio →</a></p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Nutrição</span><span class="tipo">Acompanhamento</span><div class="info"><p class="desc">Acompanhamento nutricional alinhado aos seus objetivos de treino, porque sua performance não termina quando o treino acaba.</p><p class="acesso"><span>Como acessar</span>Nutricionista a cada 2 meses nos planos Performance e Casal.</p></div></li>
         </ul>
       </div>
@@ -727,6 +769,32 @@
           <div class="barras" aria-hidden="true"><i style="height:38%"></i><i style="height:44%"></i><i style="height:47%"></i><i style="height:52%"></i><i style="height:58%"></i><i style="height:63%"></i><i style="height:70%"></i><i style="height:78%"></i></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="secao core" id="core" aria-labelledby="core-titulo">
+    <div class="wrap core-cab">
+      <div>
+        <p class="label">SHIFT Core · Estúdio de Pilates</p>
+        <h2 class="display h2" id="core-titulo">Um espaço pensado para o <span class="it">movimento</span></h2>
+      </div>
+      <div class="core-lado">
+        <p>Nosso estúdio exclusivo de Pilates: um ambiente moderno e acolhedor, pensado para movimento, consciência corporal e cuidado integral. Pacotes de 1x ou 2x por semana.</p>
+        <div class="core-ctrl">
+          <button type="button" class="seta ant" id="core-ant" aria-label="Imagem anterior" aria-controls="core-trilho"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg></button>
+          <span class="contador" id="core-cont" aria-live="polite">01 / 06</span>
+          <button type="button" class="seta" id="core-prox" aria-label="Próxima imagem" aria-controls="core-trilho"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg></button>
+        </div>
+        <p class="nota-core">Imagens do projeto do estúdio.</p>
+      </div>
+    </div>
+    <div class="core-trilho" id="core-trilho" tabindex="0" role="region" aria-label="Galeria do estúdio SHIFT Core">
+      <figure class="core-slide"><img src="assets/fotos/core-1.jpg" alt="Estúdio SHIFT Core com cadillac, chair e ladder barrel, paredes laranja e o logo da SHIFT" width="1090" height="617" loading="lazy"><figcaption>Cadillac, Chair e Ladder Barrel</figcaption></figure>
+      <figure class="core-slide"><img src="assets/fotos/core-2.jpg" alt="Vista longa do estúdio com reformer, chair e cadillac, e janelas ao fundo" width="1094" height="631" loading="lazy"><figcaption>Reformer, Chair e Cadillac</figcaption></figure>
+      <figure class="core-slide"><img src="assets/fotos/core-3.jpg" alt="Cadillac em primeiro plano com wall units na parede laranja" width="1104" height="640" loading="lazy"><figcaption>Cadillac e Wall Unit</figcaption></figure>
+      <figure class="core-slide"><img src="assets/fotos/core-4.jpg" alt="Ladder barrel e wall unit na parede laranja, com a recepção e o logo da SHIFT ao fundo" width="1110" height="640" loading="lazy"><figcaption>Ladder Barrel e Wall Unit</figcaption></figure>
+      <figure class="core-slide"><img src="assets/fotos/core-5.jpg" alt="Visão geral do estúdio de Pilates com barrels, chairs, cadillacs e plantas" width="1102" height="633" loading="lazy"><figcaption>Visão geral do estúdio</figcaption></figure>
+      <figure class="core-slide"><img src="assets/fotos/core-6.jpg" alt="Recepção do estúdio com o logo da SHIFT, reformer e chair" width="1074" height="642" loading="lazy"><figcaption>Recepção e Reformer</figcaption></figure>
     </div>
   </section>
 
@@ -1125,6 +1193,32 @@
     window.addEventListener("scroll", pedir, { passive: true });
     window.addEventListener("resize", pedir);
     mover();
+  }
+
+  var trilho = document.getElementById("core-trilho");
+  if (trilho) {
+    var slides = trilho.querySelectorAll(".core-slide");
+    var cont = document.getElementById("core-cont");
+    var ant = document.getElementById("core-ant");
+    var prox = document.getElementById("core-prox");
+    var dois = function (n) { return (n < 10 ? "0" : "") + n; };
+    var passo = function () { return slides[0].offsetWidth + 16; };
+    var marcar = function () {
+      var max = trilho.scrollWidth - trilho.clientWidth - 2;
+      var i = trilho.scrollLeft >= max ? slides.length - 1 : Math.round(trilho.scrollLeft / passo());
+      cont.textContent = dois(i + 1) + " / " + dois(slides.length);
+      ant.disabled = trilho.scrollLeft <= 2;
+      prox.disabled = trilho.scrollLeft >= max;
+    };
+    var ir = function (dir) { trilho.scrollBy({ left: dir * passo(), behavior: calmo ? "auto" : "smooth" }); };
+    ant.addEventListener("click", function () { ir(-1); });
+    prox.addEventListener("click", function () { ir(1); });
+    var agendado = false;
+    trilho.addEventListener("scroll", function () {
+      if (!agendado) { agendado = true; window.requestAnimationFrame(function () { agendado = false; marcar(); }); }
+    }, { passive: true });
+    window.addEventListener("resize", marcar);
+    marcar();
   }
 
   var interesse = document.getElementById("f-interesse");
