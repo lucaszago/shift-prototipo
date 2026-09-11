@@ -112,11 +112,18 @@
 
   /* ---------- nav ---------- */
   .nav {
-    position: sticky; top: 0; z-index: 30;
-    background: rgba(33, 26, 20, 0.9);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    background: transparent;
+    transition: background .3s, box-shadow .3s;
+  }
+  .nav.solida {
+    background: rgba(33, 26, 20, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--linha);
   }
+  .nav:not(.solida) .nav-links a:not(.btn) { color: rgba(243, 238, 232, 0.86); }
+  main section[id] { scroll-margin-top: 72px; }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 16px; }
   .nav-logo img { height: 24px; width: auto; }
   .nav-links { display: flex; align-items: center; gap: 28px; }
@@ -139,7 +146,7 @@
   /* ---------- hero ---------- */
   .hero {
     position: relative; overflow: hidden; isolation: isolate;
-    min-height: min(92vh, 900px);
+    min-height: min(100vh, 940px);
     display: flex; flex-direction: column; justify-content: flex-end;
   }
   .hero-bg {
@@ -151,6 +158,7 @@
   .hero::before {
     content: ""; position: absolute; inset: 0; z-index: -1;
     background:
+      linear-gradient(180deg, rgba(20, 15, 11, .6) 0%, rgba(20, 15, 11, 0) 20%),
       linear-gradient(90deg, rgba(24, 18, 13, .94) 0%, rgba(24, 18, 13, .8) 34%, rgba(24, 18, 13, .22) 66%, rgba(24, 18, 13, .06) 100%),
       linear-gradient(0deg, var(--carvao) 0%, rgba(33, 26, 20, 0) 34%);
   }
@@ -211,16 +219,32 @@
   .galeria .foto:first-child { grid-row: span 2; }
 
   /* ecossistema — pilares e índice */
-  .pilar + .pilar { margin-top: clamp(48px, 6vw, 72px); }
+  .abas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: clamp(24px, 3vw, 36px); }
+  .aba {
+    font: inherit; cursor: pointer; text-align: left;
+    display: grid; gap: 2px; min-width: 210px;
+    padding: 14px 22px 16px; border-radius: 18px;
+    border: 1px solid var(--linha); background: transparent; color: var(--giz);
+    transition: border-color .2s, background .2s;
+  }
+  .aba .it { font-size: 30px; line-height: 1.1; }
+  .aba small { font-size: 13px; color: var(--ferro); }
+  .aba:hover { border-color: var(--laranja); }
+  .aba[aria-selected="true"] { background: var(--carvao-2); border-color: var(--laranja); }
+  .aba[aria-selected="true"] .it { color: var(--laranja-txt); }
+  .pilar-intro { color: var(--ferro); font-size: 15.5px; padding-bottom: 14px; border-bottom: 2px solid var(--laranja); }
   .pilar-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; padding-bottom: 14px; border-bottom: 2px solid var(--laranja); }
   .pilar-cab .it { font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; color: var(--giz); }
   .pilar-cab p { color: var(--ferro); font-size: 15.5px; }
   .indice { list-style: none; margin: 0; padding: 0; }
   .indice > li {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr) minmax(0, 1.25fr);
-    gap: 10px 32px; align-items: baseline;
-    padding-block: 30px; border-bottom: 1px solid var(--linha);
+    display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr); grid-template-rows: auto 1fr;
+    gap: 8px 40px; align-items: start;
+    padding-block: 28px; border-bottom: 1px solid var(--linha);
   }
+  .indice .nome { grid-column: 1; grid-row: 1; }
+  .indice .tipo { grid-column: 1; grid-row: 2; }
+  .indice .info { grid-column: 2; grid-row: 1 / span 2; }
   .indice .nome {
     display: flex; align-items: center; gap: 14px;
     font-size: clamp(1.9rem, 3.3vw, 2.7rem);
@@ -353,6 +377,16 @@
   .citacao { margin-top: clamp(40px, 6vw, 72px); font-size: clamp(2rem, 4.2vw, 3.5rem); line-height: 1.12; max-width: 20em; color: var(--giz); }
   .citacao em { font-style: italic; color: var(--laranja-txt); }
 
+  /* faixa de foto */
+  .faixa-foto { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(96px, 14vw, 180px); }
+  .faixa-foto > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .faixa-foto::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(24, 18, 13, .93) 0%, rgba(24, 18, 13, .74) 52%, rgba(24, 18, 13, .4) 100%); }
+  .faixa-foto .citacao { margin-top: 22px; }
+  .faixa-foto .pilares { margin-top: 40px; }
+
+  /* barra de agendamento fixa (celular) */
+  .barra-cta { display: none; }
+
   /* dúvidas */
   .duvidas .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(36px, 6vw, 88px); align-items: start; }
   .duvidas .h2 { margin-top: 18px; }
@@ -441,6 +475,21 @@
   .chip:hover { border-color: var(--laranja); }
   .ia-nota { font-size: 11.5px; color: #75685C; padding: 10px 16px; border-top: 1px solid #DCD3C9; }
 
+  @media (max-width: 900px) {
+    .barra-cta {
+      display: flex; gap: 8px;
+      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 35;
+      padding: 7px; border-radius: 999px;
+      background: rgba(33, 26, 20, 0.95); border: 1px solid var(--linha);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .7);
+    }
+    .barra-cta .btn { flex: 1; padding: 14px 12px; font-size: 13px; }
+    .ia-botao { bottom: 86px; }
+    .ia-painel { bottom: 146px; }
+    body { padding-bottom: 84px; }
+  }
+
   /* ---------- responsivo ---------- */
   @media (max-width: 1080px) {
     .planos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
@@ -450,7 +499,10 @@
   }
   @media (max-width: 900px) {
     .exp .wrap, .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
-    .indice > li { grid-template-columns: 1fr; gap: 8px; }
+    .indice > li { grid-template-columns: 1fr; grid-template-rows: auto; gap: 8px; }
+    .indice .nome, .indice .tipo, .indice .info { grid-column: auto; grid-row: auto; }
+    .aba { min-width: 0; flex: 1 1 140px; padding: 12px 16px 14px; }
+    .aba .it { font-size: 25px; }
     .indice .tipo { order: -1; }
     .papeis { grid-template-columns: 1fr; }
     .equipe-grid { grid-template-columns: 1fr; }
@@ -463,7 +515,7 @@
     body { font-size: 16px; }
     .hero { min-height: 0; display: block; }
     .hero-bg { position: relative; inset: auto; height: max(56vh, 320px); object-position: 70% 75%; }
-    .hero::before { bottom: auto; height: max(56vh, 320px); background: linear-gradient(0deg, var(--carvao) 0%, rgba(33, 26, 20, 0) 45%); }
+    .hero::before { bottom: auto; height: max(56vh, 320px); background: linear-gradient(180deg, rgba(20, 15, 11, .6) 0%, rgba(20, 15, 11, 0) 26%), linear-gradient(0deg, var(--carvao) 0%, rgba(33, 26, 20, 0) 45%); }
     .hero-conteudo { padding-top: 0; margin-top: -56px; }
     .fatos { grid-template-columns: 1fr; gap: 16px; }
     .planos, .passos, .momentos, .cards2 { grid-template-columns: 1fr; }
@@ -574,34 +626,32 @@
         <p class="lead muted">Não é apenas sobre treinar: é ter uma estrutura inteira trabalhando pela sua evolução. São três pilares que se conectam.</p>
       </div>
 
-      <div class="pilar">
-        <div class="pilar-cab"><h3 class="it">Treinar</h3><p>Musculação, spinning e funcional, com acompanhamento de professores.</p></div>
+      <div class="abas" role="tablist" aria-label="Pilares do ecossistema">
+        <button class="aba" type="button" role="tab" id="aba-treinar" aria-controls="pilar-treinar" aria-selected="true"><span class="it">Treinar</span><small>Performance · Flow · Move</small></button>
+        <button class="aba" type="button" role="tab" id="aba-recuperar" aria-controls="pilar-recuperar" aria-selected="false" tabindex="-1"><span class="it">Recuperar</span><small>Recovery · Care</small></button>
+        <button class="aba" type="button" role="tab" id="aba-equilibrar" aria-controls="pilar-equilibrar" aria-selected="false" tabindex="-1"><span class="it">Equilibrar</span><small>Core · Nutrição</small></button>
+      </div>
+      <div class="painel-pilar" id="pilar-treinar" role="tabpanel" aria-labelledby="aba-treinar">
+        <p class="pilar-intro">Musculação, spinning e funcional, com acompanhamento de professores.</p>
         <ul class="indice">
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Performance</span><span class="tipo">Musculação</span><div class="info"><p class="desc">Musculação personalizada com acompanhamento contínuo de professores. Mobilidade, estímulo metabólico e força organizados numa metodologia que faz sentido para você.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Treino com professor, até 6x por semana</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Avaliação física com bioimpedância InBody todo mês</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Água, pré-treino/creatina e whey pós-treino</li></ul><p class="acesso"><span>Como acessar</span>É a base de todos os planos Performance.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Flow</span><span class="tipo">Spinning</span><div class="info"><p class="desc">Spinning com alta energia, métricas de intensidade e músicas envolventes. Uma experiência imersiva SHIFT.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Métricas de intensidade durante a aula</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Vagas limitadas por aula</li></ul><p class="acesso"><span>Como acessar</span>1x por semana nos planos Performance. Também por aula avulsa ou pacotes de 4 e 12 aulas.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Move</span><span class="tipo">Funcional</span><div class="info"><p class="desc">Treinamento funcional focado em agilidade, força e mobilidade, complementando a musculação.</p><p class="acesso"><span>Como acessar</span>1x por semana nos planos Performance.</p></div></li>
         </ul>
       </div>
-
-      <div class="pilar">
-        <div class="pilar-cab"><h3 class="it">Recuperar</h3><p>Recovery integrado à sua rotina de treino e ao seu histórico de evolução.</p></div>
+      <div class="painel-pilar" id="pilar-recuperar" role="tabpanel" aria-labelledby="aba-recuperar" hidden>
+        <p class="pilar-intro">Recovery integrado à sua rotina de treino e ao seu histórico de evolução.</p>
         <ul class="indice">
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Recovery</span><span class="tipo">Recuperação</span><div class="info"><p class="desc">Recuperação muscular avançada com tecnologia <b>Therabody</b>. Desenvolvido para corredores, atletas e praticantes de atividades físicas que buscam acelerar a regeneração e prevenir lesões.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Botas de compressão pneumática</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Linha completa de equipamentos Therabody</li></ul><p class="acesso"><span>Como acessar</span>1x por mês nos planos Performance. Também em pacotes de 2 e 6 sessões.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Care</span><span class="tipo">Fisioterapia</span><div class="info"><p class="desc">Fisioterapia preventiva, tratamento especializado e cuidados corporais. Seu momento de cuidado também está aqui.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Drenagem linfática e drenagem pós-operatória</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Massagem relaxante e liberação miofascial</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Limpeza de pele profunda</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Ventosaterapia e pedras quentes</li></ul><p class="acesso"><span>Como acessar</span>Fisioterapeuta a cada 2 meses nos planos Performance e Casal. Demais serviços com horário e valor sob consulta.</p></div></li>
         </ul>
       </div>
-
-      <div class="pilar">
-        <div class="pilar-cab"><h3 class="it">Equilibrar</h3><p>Pilates e nutrição para o que acontece fora do treino.</p></div>
+      <div class="painel-pilar" id="pilar-equilibrar" role="tabpanel" aria-labelledby="aba-equilibrar" hidden>
+        <p class="pilar-intro">Pilates e nutrição para o que acontece fora do treino.</p>
         <ul class="indice">
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Core</span><span class="tipo">Pilates</span><div class="info"><p class="desc">Nosso estúdio exclusivo de Pilates. Um ambiente moderno e acolhedor, pensado para movimento, consciência corporal e cuidado integral.</p><p class="acesso"><span>Como acessar</span>Pacotes de 1x ou 2x por semana. Horários com a nossa recepção.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Nutrição</span><span class="tipo">Acompanhamento</span><div class="info"><p class="desc">Acompanhamento nutricional alinhado aos seus objetivos de treino, porque sua performance não termina quando o treino acaba.</p><p class="acesso"><span>Como acessar</span>Nutricionista a cada 2 meses nos planos Performance e Casal.</p></div></li>
         </ul>
-      </div>
-
-      <div class="total360">
-        <h3 class="display">Experiência 360°</h3>
-        <p>Estrutura integrada projetada para cuidar de todas as suas etapas: treinamento, avaliação, nutrição, fisioterapia, recovery e pilates no mesmo lugar.</p>
       </div>
     </div>
   </section>
@@ -867,9 +917,11 @@
     </div>
   </section>
 
-  <section class="secao porque">
+  <section class="faixa-foto" aria-label="Por que escolher a SHIFT">
+    <img src="assets/fotos/detail.jpg" alt="" width="1400" height="933" loading="lazy">
     <div class="wrap">
       <p class="label">Por que escolher a SHIFT?</p>
+      <p class="it citacao">Mais do que um lugar para treinar. Uma estrutura pensada para <em>acompanhar sua evolução por completo.</em></p>
       <div class="pilares" aria-label="Treinamento, avaliação, nutrição, fisioterapia, recovery e pilates">
         <span>Treinamento</span><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>
         <span>Avaliação</span><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>
@@ -878,7 +930,6 @@
         <span>Recovery</span><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>
         <span>Pilates</span>
       </div>
-      <p class="it citacao">Mais do que um lugar para treinar. Uma estrutura pensada para <em>acompanhar sua evolução por completo.</em></p>
     </div>
   </section>
 
@@ -998,6 +1049,11 @@
   </div>
 </footer>
 
+<nav class="barra-cta" aria-label="Agendamento rápido">
+  <a class="btn btn-laranja" href="#visita">Agendar visita</a>
+  <a class="btn btn-linha" href="https://wa.me/5511990130543?text=Ol%C3%A1%2C%20SHIFT!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20visita." target="_blank" rel="noopener">WhatsApp</a>
+</nav>
+
 <button class="ia-botao" id="ia-botao" type="button" aria-expanded="false" aria-controls="ia-painel">
   <span class="dot"><svg aria-hidden="true"><use href="#chev"/></svg></span>
   <span class="txt">Tirar dúvidas</span>
@@ -1016,6 +1072,29 @@
 (function () {
   // WhatsApp da SHIFT: DDI 55 + DDD + número, só dígitos.
   var WHATSAPP = "5511990130543";
+
+  var nav = document.querySelector(".nav");
+  function navSolida() { nav.classList.toggle("solida", window.scrollY > 40); }
+  navSolida();
+  window.addEventListener("scroll", navSolida, { passive: true });
+
+  var abas = Array.prototype.slice.call(document.querySelectorAll(".aba"));
+  function ativar(aba, foco) {
+    abas.forEach(function (a) {
+      var ativo = a === aba;
+      a.setAttribute("aria-selected", String(ativo));
+      a.tabIndex = ativo ? 0 : -1;
+      document.getElementById(a.getAttribute("aria-controls")).hidden = !ativo;
+    });
+    if (foco) aba.focus();
+  }
+  abas.forEach(function (aba, i) {
+    aba.addEventListener("click", function () { ativar(aba); });
+    aba.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") ativar(abas[(i + 1) % abas.length], true);
+      if (e.key === "ArrowLeft") ativar(abas[(i + abas.length - 1) % abas.length], true);
+    });
+  });
 
   var interesse = document.getElementById("f-interesse");
   document.querySelectorAll("[data-plano]").forEach(function (a) {
