@@ -190,11 +190,19 @@
   .cabeca p { color: var(--ferro); max-width: 32em; }
 
   /* treinar certo */
-  .exp { background: var(--carvao-2); }
-  .exp .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px 80px; align-items: start; }
-  .exp h2 { font-size: clamp(2.6rem, 5.8vw, 5rem); margin-top: 18px; }
-  .exp .lead { margin-top: 28px; }
-  .exp .txt { display: grid; gap: 32px; }
+  .exp { background: var(--carvao-2); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding-block: 0; }
+  .exp-foto { position: relative; margin: 0; min-height: 100%; }
+  .exp-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 42% center; }
+  .selo {
+    position: absolute; right: 0; bottom: 0;
+    display: flex; align-items: center; gap: 16px;
+    padding: 22px 30px; background: var(--laranja); color: var(--carvao);
+    font-family: var(--f-cond); font-stretch: 75%; font-weight: 800; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; line-height: 1.25;
+  }
+  .selo .chev { width: 12px; height: 20px; }
+  .exp-txt { padding-block: clamp(72px, 9vw, 128px); padding-inline: clamp(28px, 5vw, 80px) var(--gutter); max-width: 680px; display: grid; gap: 32px; align-content: center; }
+  .exp h2 { font-size: clamp(2.4rem, 4.4vw, 4rem); margin-top: 18px; }
+  .exp .lead { margin-top: 24px; }
   .razao { display: grid; gap: 8px; padding-bottom: 28px; border-bottom: 1px solid var(--linha); }
   .razao b { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: clamp(5.5rem, 12vw, 9rem); line-height: .82; color: var(--laranja); font-variant-numeric: tabular-nums; }
   .razao span { font-family: var(--f-cond); font-stretch: 75%; font-weight: 700; font-size: 13px; letter-spacing: .26em; text-transform: uppercase; }
@@ -384,6 +392,10 @@
   .faixa-foto .citacao { margin-top: 22px; }
   .faixa-foto .pilares { margin-top: 40px; }
 
+  /* zoom no scroll */
+  .zoom { overflow: hidden; }
+  .zoom img { will-change: transform; transform-origin: center; }
+
   /* barra de agendamento fixa (celular) */
   .barra-cta { display: none; }
 
@@ -406,7 +418,10 @@
   .faq details p { padding-bottom: 22px; color: var(--claro-txt); max-width: 38em; font-size: 16px; }
 
   /* visita */
-  .visita { border-top: 1px solid var(--linha); }
+  .visita { position: relative; isolation: isolate; overflow: hidden; }
+  .visita > .fundo { position: absolute; inset: 0; z-index: -2; margin: 0; }
+  .visita > .fundo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .visita::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(24, 18, 13, .96) 0%, rgba(24, 18, 13, .86) 46%, rgba(24, 18, 13, .62) 100%); }
   .visita .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 88px); align-items: start; }
   .visita .h2 { margin-top: 18px; }
   .visita .h2 span { color: var(--laranja); display: block; }
@@ -435,7 +450,7 @@
   .form .rodape-f { font-size: 13.5px; color: var(--ferro); }
 
   /* footer */
-  footer { border-top: 1px solid var(--linha); padding-block: 48px; }
+  footer { border-top: 1px solid var(--linha); padding-block: 48px clamp(112px, 10vw, 128px); }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; align-items: flex-end; }
   footer img { height: 32px; width: auto; }
   footer .slogan { margin-top: 14px; font-size: 20px; color: var(--laranja-txt); }
@@ -498,9 +513,13 @@
     .nav-links a:not(.btn) { display: none; }
   }
   @media (max-width: 900px) {
-    .exp .wrap, .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
+    .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
     .indice > li { grid-template-columns: 1fr; grid-template-rows: auto; gap: 8px; }
     .indice .nome, .indice .tipo, .indice .info { grid-column: auto; grid-row: auto; }
+    .exp { grid-template-columns: 1fr; }
+    .exp-foto { aspect-ratio: 4 / 3; min-height: 0; }
+    .exp-txt { padding-inline: var(--gutter); max-width: none; }
+    .selo { padding: 16px 20px; font-size: 14px; }
     .aba { min-width: 0; flex: 1 1 140px; padding: 12px 16px 14px; }
     .aba .it { font-size: 25px; }
     .indice .tipo { order: -1; }
@@ -581,13 +600,16 @@
   </section>
 
   <section class="secao exp" id="experiencia">
-    <div class="wrap">
+    <figure class="exp-foto zoom">
+      <img src="assets/fotos/experience.jpg" alt="Aluna treinando na cadeira extensora com o professor da SHIFT ajustando o movimento" width="1400" height="933" loading="lazy">
+      <figcaption class="selo"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg><span>Mais presença.<br>Mais resultado.</span></figcaption>
+    </figure>
+    <div class="exp-txt">
       <div>
         <p class="label">A experiência</p>
         <h2 class="display">Treinar mais não é a resposta. <span class="it">Treinar certo é.</span></h2>
         <p class="lead">Na SHIFT, cada sessão tem intenção. Você não recebe uma ficha genérica: recebe direção, correção e um time que conhece o seu processo.</p>
       </div>
-      <div class="txt">
         <div class="razao">
           <b>360°</b>
           <span>Experiência integrada</span>
@@ -604,17 +626,9 @@
           <li>Performance</li>
           <li>Conforto</li>
         </ul>
-      </div>
     </div>
   </section>
 
-  <section class="galeria-sec" aria-label="Conheça a SHIFT por dentro">
-    <div class="wrap galeria">
-      <figure class="foto"><img src="assets/fotos/performance.jpg" alt="Professor ajustando a cadeira extensora para uma aluna, com a parede de equipamentos ao fundo" width="1600" height="1066" loading="lazy"><figcaption>Salão de musculação</figcaption></figure>
-      <figure class="foto"><img src="assets/fotos/detail.jpg" alt="Professor orientando a pegada de uma aluna no cross" width="1600" height="1066" loading="lazy"><figcaption>Correção em tempo real</figcaption></figure>
-      <figure class="foto"><img src="assets/fotos/experience.jpg" alt="Aluna treinando na extensora com o professor ao lado" width="1600" height="1066" loading="lazy"><figcaption>Acompanhamento próximo</figcaption></figure>
-    </div>
-  </section>
 
   <section class="secao" id="modalidades">
     <div class="wrap">
@@ -835,7 +849,7 @@
   <section class="secao chegada" id="conforto">
     <div class="wrap">
       <div class="topo">
-        <figure class="foto">
+        <figure class="foto zoom">
           <img src="assets/fotos/space.jpg" alt="Salão da SHIFT com o logo na parede e um professor acompanhando uma aluna no cross" width="1600" height="1066" loading="lazy">
           <figcaption>O espaço SHIFT</figcaption>
         </figure>
@@ -892,7 +906,7 @@
         <p>Treino, fisioterapia e nutrição trabalhando a partir do mesmo objetivo: o seu resultado.</p>
       </div>
       <div class="equipe-grid">
-      <figure class="foto">
+      <figure class="foto zoom">
         <img src="assets/fotos/coaching.jpg" alt="Professor da SHIFT acompanhando uma aluna em um agachamento no salão" width="933" height="1400" loading="lazy">
         <figcaption>Direção, correção e acompanhamento</figcaption>
       </figure>
@@ -917,8 +931,8 @@
     </div>
   </section>
 
-  <section class="faixa-foto" aria-label="Por que escolher a SHIFT">
-    <img src="assets/fotos/detail.jpg" alt="" width="1400" height="933" loading="lazy">
+  <section class="faixa-foto zoom" aria-label="Por que escolher a SHIFT">
+    <img src="assets/fotos/performance.jpg" alt="" width="1400" height="933" loading="lazy">
     <div class="wrap">
       <p class="label">Por que escolher a SHIFT?</p>
       <p class="it citacao">Mais do que um lugar para treinar. Uma estrutura pensada para <em>acompanhar sua evolução por completo.</em></p>
@@ -978,6 +992,7 @@
   </section>
 
   <section class="secao visita" id="visita">
+    <figure class="fundo zoom" aria-hidden="true"><img src="assets/fotos/detail.jpg" alt="" width="1400" height="933" loading="lazy"></figure>
     <div class="wrap">
       <div>
         <p class="label">SHIFT · Onde mudar é só o começo</p>
@@ -1095,6 +1110,27 @@
       if (e.key === "ArrowLeft") ativar(abas[(i + abas.length - 1) % abas.length], true);
     });
   });
+
+  var fotos = Array.prototype.slice.call(document.querySelectorAll(".zoom img"));
+  var calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!calmo && fotos.length) {
+    var pedido = false;
+    var mover = function () {
+      pedido = false;
+      var vh = window.innerHeight;
+      fotos.forEach(function (img) {
+        var r = img.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+        var z = 1.18 - 0.12 * Math.min(1, p * 1.6);
+        img.style.transform = "translateY(" + ((0.5 - p) * 5).toFixed(2) + "%) scale(" + z.toFixed(4) + ")";
+      });
+    };
+    var pedir = function () { if (!pedido) { pedido = true; window.requestAnimationFrame(mover); } };
+    window.addEventListener("scroll", pedir, { passive: true });
+    window.addEventListener("resize", pedir);
+    mover();
+  }
 
   var interesse = document.getElementById("f-interesse");
   document.querySelectorAll("[data-plano]").forEach(function (a) {
