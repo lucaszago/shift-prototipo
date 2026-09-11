@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SHIFT Estúdio · Performance, saúde e experiência</title>
-<meta name="description" content="SHIFT, estúdio de musculação personalizado. Musculação com treinador, spinning, funcional, recovery Therabody, fisioterapia, pilates e nutrição em um só lugar.">
+<title>SHIFT Estúdio · Não é academia. É SHIFT.</title>
+<meta name="description" content="SHIFT, estúdio de musculação personalizado em Jundiaí. Musculação com professor, spinning, funcional, recovery Therabody, fisioterapia, pilates e nutrição em um só lugar.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#211A14">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SHIFT Estúdio · Onde mudar, é só o começo">
-<meta property="og:description" content="SHIFT, estúdio de musculação personalizado. Musculação com treinador, spinning, funcional, recovery Therabody, fisioterapia, pilates e nutrição em um só lugar.">
-<meta property="og:image" content="assets/favicon.png">
+<meta property="og:description" content="SHIFT, estúdio de musculação personalizado em Jundiaí. Musculação com professor, spinning, funcional, recovery Therabody, fisioterapia, pilates e nutrição em um só lugar.">
+<meta property="og:image" content="assets/fotos/training-wide.jpg">
 <meta property="og:locale" content="pt_BR">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
@@ -124,31 +124,17 @@
   .nav-links a:not(.btn):hover { color: var(--giz); }
   .nav .btn { padding: 11px 18px; font-size: 13px; }
 
-  /* ---------- foto (moldura para fotos reais do espaço) ---------- */
-  .foto {
-    position: relative; margin: 0;
-    border-radius: 22px; overflow: hidden;
-    background:
-      radial-gradient(120% 70% at 80% 6%, rgba(255, 150, 70, 0.30), transparent 55%),
-      radial-gradient(90% 60% at 8% 100%, rgba(255, 107, 0, 0.14), transparent 62%),
-      linear-gradient(165deg, #3C3026 0%, #261E17 55%, #17120E 100%);
-    max-width: 100%;
-  }
-  .foto::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
-  .foto .marca {
-    position: absolute; right: -8%; bottom: -6%; height: 78%; width: auto;
-    fill: none; stroke: rgba(255, 107, 0, 0.32); stroke-width: 10;
-  }
+  /* ---------- fotos ---------- */
+  .foto { position: relative; margin: 0; border-radius: 22px; overflow: hidden; background: var(--carvao-2); max-width: 100%; }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+  .foto::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 62%, rgba(20, 15, 11, 0.55)); }
   .foto figcaption {
-    position: absolute; left: 20px; bottom: 18px; right: 20px;
+    position: absolute; z-index: 1; left: 20px; bottom: 16px; right: 20px;
     display: flex; align-items: center; gap: 10px;
-    font-family: var(--f-cond); font-stretch: 75%; font-weight: 600;
-    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243, 238, 232, 0.62);
+    font-family: var(--f-cond); font-stretch: 75%; font-weight: 700;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243, 238, 232, 0.85);
   }
-  .foto figcaption::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
+  .foto figcaption::before { content: ""; width: 18px; height: 1.5px; background: var(--laranja); }
 
   /* ---------- hero ---------- */
   .hero .wrap.grid {
@@ -156,10 +142,10 @@
     align-items: end;
     padding-block: clamp(40px, 6vw, 88px) clamp(36px, 5vw, 64px);
   }
-  .hero h1 { font-size: clamp(3.4rem, 8.4vw, 7.4rem); margin-top: 22px; display: grid; }
+  .hero h1 { font-size: clamp(3.6rem, 9vw, 8rem); margin-top: 22px; display: grid; }
   .hero h1 .w { display: block; animation: shift-in .9s cubic-bezier(.2, .75, .2, 1) both; }
-  .hero h1 .w2 { color: var(--laranja); animation-delay: .08s; }
-  .hero h1 .w3 { animation-delay: .16s; }
+  .hero h1 .w2 { animation-delay: .08s; }
+  .hero h1 .w3 { color: var(--laranja); animation-delay: .16s; }
   @keyframes shift-in { from { transform: translateX(-0.18em); opacity: .35; } to { transform: none; opacity: 1; } }
   .hero .lead { margin-top: 28px; }
   .hero .slogan-it { margin-top: 18px; font-size: clamp(22px, 2.2vw, 28px); color: var(--laranja-txt); }
@@ -181,11 +167,16 @@
   .cabeca .h2 { margin-top: 18px; }
   .cabeca p { color: var(--ferro); max-width: 32em; }
 
-  /* manifesto */
+  /* treinar certo */
   .exp { background: var(--carvao-2); }
-  .exp .wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px 80px; align-items: start; }
-  .exp h2 { font-size: clamp(2.5rem, 5.4vw, 4.6rem); margin-top: 18px; }
-  .exp .txt { display: grid; gap: 36px; padding-top: 42px; }
+  .exp .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px 80px; align-items: start; }
+  .exp h2 { font-size: clamp(2.6rem, 5.8vw, 5rem); margin-top: 18px; }
+  .exp .lead { margin-top: 28px; }
+  .exp .txt { display: grid; gap: 32px; }
+  .razao { display: grid; gap: 8px; padding-bottom: 28px; border-bottom: 1px solid var(--linha); }
+  .razao b { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: clamp(5.5rem, 12vw, 9rem); line-height: .82; color: var(--laranja); font-variant-numeric: tabular-nums; }
+  .razao span { font-family: var(--f-cond); font-stretch: 75%; font-weight: 700; font-size: 13px; letter-spacing: .26em; text-transform: uppercase; }
+  .razao p { color: var(--ferro); font-size: 15.5px; }
   .contra { display: grid; gap: 10px; font-size: 15.5px; color: var(--ferro); }
   .contra p { display: flex; gap: 12px; align-items: baseline; }
   .contra b { color: var(--giz); font-weight: 600; }
@@ -196,6 +187,14 @@
     font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: 26px; text-transform: uppercase; line-height: 1;
   }
   .valores li:nth-child(odd) { padding-right: 16px; }
+
+  /* galeria */
+  .galeria-sec { padding-block: clamp(14px, 2vw, 20px) 0; background: var(--carvao-2); }
+  .galeria {
+    display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 14px; height: clamp(420px, 50vw, 640px);
+  }
+  .galeria .foto:first-child { grid-row: span 2; }
 
   /* ecossistema — pilares e índice */
   .pilar + .pilar { margin-top: clamp(48px, 6vw, 72px); }
@@ -234,15 +233,34 @@
   .total360 .display { font-size: clamp(2.4rem, 5vw, 4rem); color: var(--laranja); }
   .total360 p { color: var(--claro-txt); font-size: 17px; max-width: 30em; }
 
-  /* jornada */
+  /* método / jornada */
   .jornada { background: var(--carvao-2); }
-  .passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px; }
+  .passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 24px; }
   .passo { position: relative; padding-top: 26px; border-top: 1px solid var(--linha); display: grid; gap: 12px; align-content: start; }
   .passo::before { content: ""; position: absolute; left: 0; top: -1px; width: 52px; height: 3px; background: var(--laranja); }
   .passo .n { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: 20px; letter-spacing: .08em; color: var(--laranja-txt); }
-  .passo h3 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
-  .passo p { color: var(--ferro); font-size: 15.5px; }
+  .passo h3 { font-size: clamp(1.7rem, 2.3vw, 2.1rem); }
+  .passo p { color: var(--ferro); font-size: 15px; }
   .passo p b { color: var(--giz); font-weight: 600; }
+
+  /* portal */
+  .portal .wrap { display: grid; grid-template-columns: 1fr 0.9fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
+  .portal .h2 { margin-top: 18px; }
+  .portal .lead { margin-top: 20px; }
+  .portal ul { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 10px; }
+  .portal li { display: flex; align-items: baseline; gap: 12px; color: var(--claro-txt); }
+  .portal li .chev { width: 8px; height: 13px; color: var(--laranja); transform: translateY(1px); }
+  .tela { background: #17120E; border: 1px solid var(--linha); border-radius: 26px; padding: 22px; display: grid; gap: 14px; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7); }
+  .tela-topo { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .tela-topo b { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: 24px; text-transform: uppercase; }
+  .tela-topo .ex { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ferro); border: 1px solid var(--linha); border-radius: 999px; padding: 4px 10px; }
+  .card { background: var(--carvao-2); border-radius: 16px; padding: 16px 18px; display: grid; gap: 6px; }
+  .card .k { font-family: var(--f-cond); font-stretch: 75%; font-weight: 700; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--laranja-txt); }
+  .card .v { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: 26px; text-transform: uppercase; line-height: 1; }
+  .card .s { font-size: 13.5px; color: var(--ferro); }
+  .cards2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .barras { display: flex; align-items: flex-end; gap: 6px; height: 54px; margin-top: 6px; }
+  .barras i { flex: 1; background: var(--laranja); border-radius: 3px 3px 0 0; opacity: .85; }
 
   /* ---------- capítulo claro: planos e avulsos ---------- */
   .claro { background: var(--concreto); color: var(--carvao); color-scheme: light; }
@@ -308,11 +326,11 @@
   /* equipe */
   .equipe { background: var(--carvao-2); }
   .equipe .foto { aspect-ratio: 21 / 8; margin-bottom: clamp(36px, 5vw, 56px); }
+  .equipe .foto img { object-position: center 35%; }
   .papeis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
   .papel { border-top: 1px solid var(--linha); padding-top: 22px; display: grid; gap: 10px; align-content: start; }
   .papel h3 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
   .papel p { color: var(--ferro); font-size: 15.5px; }
-  .papel .onde-atua { font-size: 14px; color: var(--claro-txt); }
 
   /* por que */
   .pilares { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 30px; }
@@ -349,6 +367,10 @@
   .roteiro li { display: flex; align-items: baseline; gap: 12px; }
   .roteiro .chev { width: 8px; height: 13px; color: var(--laranja); transform: translateY(1px); }
   .onde { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--linha); color: var(--ferro); font-size: 15px; display: grid; gap: 4px; }
+  .onde-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 14px; }
+  .onde-links a { display: inline-flex; align-items: center; gap: 8px; color: var(--giz); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--linha); padding-bottom: 2px; }
+  .onde-links a:hover { border-color: var(--laranja); }
+  .onde-links .chev { width: 7px; height: 11px; color: var(--laranja); }
   .form { background: var(--carvao-2); border-radius: 22px; padding: clamp(24px, 3vw, 36px); display: grid; gap: 20px; }
   .form .t { font-family: var(--f-cond); font-stretch: 62%; font-weight: 800; font-size: 30px; text-transform: uppercase; line-height: 1; }
   .form .s { margin-top: -10px; color: var(--ferro); font-size: 15px; }
@@ -408,23 +430,28 @@
   /* ---------- responsivo ---------- */
   @media (max-width: 1080px) {
     .planos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .passos, .momentos { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
+    .momentos { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
+    .passos { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
     .nav-links a:not(.btn) { display: none; }
   }
   @media (max-width: 900px) {
-    .hero .wrap.grid, .exp .wrap, .chegada .topo, .visita .wrap, .duvidas .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
-    .hero .foto { aspect-ratio: 16 / 10; }
-    .exp .txt { padding-top: 0; }
+    .hero .wrap.grid, .exp .wrap, .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
+    .hero .foto { aspect-ratio: 4 / 3; }
     .indice > li { grid-template-columns: 1fr; gap: 8px; }
     .indice .tipo { order: -1; }
     .papeis { grid-template-columns: 1fr; }
     .equipe .foto { aspect-ratio: 16 / 9; }
+    .galeria { height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .galeria .foto { aspect-ratio: 4 / 3; }
+    .galeria .foto:first-child { grid-row: auto; grid-column: span 2; aspect-ratio: 16 / 10; }
   }
   @media (max-width: 640px) {
     body { font-size: 16px; }
     .fatos { grid-template-columns: 1fr; gap: 16px; }
-    .planos, .passos, .momentos { grid-template-columns: 1fr; }
+    .planos, .passos, .momentos, .cards2 { grid-template-columns: 1fr; }
     .comum { grid-template-columns: 1fr; }
+    .galeria { grid-template-columns: 1fr; }
+    .galeria .foto:first-child { grid-column: auto; }
     footer .meta { text-align: left; }
     .ia-botao .txt { display: none; }
     .ia-botao { padding: 10px; }
@@ -451,7 +478,7 @@
     <nav class="nav-links" aria-label="Principal">
       <a href="#experiencia">A experiência</a>
       <a href="#modalidades">Modalidades</a>
-      <a href="#jornada">Jornada</a>
+      <a href="#metodo">Método</a>
       <a href="#planos">Planos</a>
       <a href="#duvidas">Dúvidas</a>
       <a class="btn btn-laranja" href="#visita">Agendar visita</a>
@@ -463,24 +490,24 @@
   <section class="hero">
     <div class="wrap grid">
       <div>
-        <p class="label">Estúdio de musculação personalizado</p>
-        <h1 class="display"><span class="w w1">Performance</span><span class="w w2">Saúde</span><span class="w w3">Experiência</span></h1>
-        <p class="lead">Conheça uma nova forma de cuidar de você. Uma estrutura completa desenhada para impulsionar seus resultados.</p>
+        <p class="label">Estúdio de musculação personalizado · Jundiaí</p>
+        <h1 class="display"><span class="w w1">Não é</span><span class="w w2">academia.</span><span class="w w3">É SHIFT.</span></h1>
+        <p class="lead">Performance, saúde e experiência em um só lugar. Um método de treino construído ao redor de você, com acompanhamento próximo e uma estrutura completa para impulsionar seus resultados.</p>
         <p class="it slogan-it">Onde mudar, é só o começo.</p>
         <div class="ctas">
           <a class="btn btn-laranja" href="#visita">Agendar visita exclusiva <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></a>
-          <a class="btn btn-linha" href="#jornada">Como funciona</a>
+          <a class="btn btn-linha" href="#metodo">Conhecer o método</a>
         </div>
       </div>
       <figure class="foto">
-        <svg class="marca" viewBox="280 110 950 1780" aria-hidden="true"><path d="M297 130 C600 400 900 690 1205 985 L297 1868 L299 1517 C560 1300 800 1140 1033 987 C780 830 540 660 297 471 Z"/></svg>
-        <figcaption>Foto · salão de musculação</figcaption>
+        <img src="assets/fotos/coaching.jpg" alt="Professor da SHIFT acompanhando uma aluna em um agachamento no salão" width="1066" height="1600" fetchpriority="high">
+        <figcaption>Treino acompanhado</figcaption>
       </figure>
     </div>
     <div class="wrap">
       <dl class="fatos">
         <div><dt>Horários</dt><dd>Seg a sex, 6h–20h · Sáb, 8h–12h</dd></div>
-        <div><dt>Endereço</dt><dd>Av. 9 de Julho, 1315 · Edifício Nine</dd></div>
+        <div><dt>Endereço</dt><dd>Av. 9 de Julho, 1315 · Edifício Nine · Jundiaí</dd></div>
         <div><dt>Chegada</dt><dd>Estacionamento coberto e manobrista</dd></div>
       </dl>
     </div>
@@ -490,14 +517,19 @@
     <div class="wrap">
       <div>
         <p class="label">A experiência</p>
-        <h2 class="display">Não é apenas sobre treinar. É sobre ter uma <span class="it">estrutura inteira</span> trabalhando pela sua evolução.</h2>
+        <h2 class="display">Treinar mais não é a resposta. <span class="it">Treinar certo é.</span></h2>
+        <p class="lead">Na SHIFT, cada sessão tem intenção. Você não recebe uma ficha genérica: recebe direção, correção e um time que conhece o seu processo.</p>
       </div>
       <div class="txt">
-        <p class="lead">Criamos um ambiente onde cada detalhe foi planejado para maximizar seu bem-estar, foco e performance, eliminando barreiras entre você e seus objetivos.</p>
+        <div class="razao">
+          <b>360°</b>
+          <span>Experiência integrada</span>
+          <p>Treino, avaliação, nutrição, fisioterapia, recovery e pilates no mesmo lugar, com vagas limitadas por aula.</p>
+        </div>
         <div class="contra">
-          <p><svg class="chev" aria-hidden="true"><use href="#chev"/></svg><span><b>Treino com treinador ao lado</b>, não uma ficha entregue e esquecida.</span></p>
           <p><svg class="chev" aria-hidden="true"><use href="#chev"/></svg><span><b>Evolução medida</b> com bioimpedância InBody todo mês.</span></p>
           <p><svg class="chev" aria-hidden="true"><use href="#chev"/></svg><span><b>Recuperação, fisioterapia e nutrição</b> no mesmo lugar do treino.</span></p>
+          <p><svg class="chev" aria-hidden="true"><use href="#chev"/></svg><span><b>Conforto de ponta a ponta</b>, do manobrista ao café depois do treino.</span></p>
         </div>
         <ul class="valores">
           <li>Exclusividade</li>
@@ -509,6 +541,14 @@
     </div>
   </section>
 
+  <section class="galeria-sec" aria-label="Conheça a SHIFT por dentro">
+    <div class="wrap galeria">
+      <figure class="foto"><img src="assets/fotos/performance.jpg" alt="Professor ajustando a cadeira extensora para uma aluna, com a parede de equipamentos ao fundo" width="1600" height="1066" loading="lazy"><figcaption>Salão de musculação</figcaption></figure>
+      <figure class="foto"><img src="assets/fotos/detail.jpg" alt="Professor orientando a pegada de uma aluna no cross" width="1600" height="1066" loading="lazy"><figcaption>Correção em tempo real</figcaption></figure>
+      <figure class="foto"><img src="assets/fotos/experience.jpg" alt="Aluna treinando na extensora com o professor ao lado" width="1600" height="1066" loading="lazy"><figcaption>Acompanhamento próximo</figcaption></figure>
+    </div>
+  </section>
+
   <section class="secao" id="modalidades">
     <div class="wrap">
       <div class="cabeca">
@@ -516,20 +556,20 @@
           <p class="label">O ecossistema</p>
           <h2 class="display h2">Tudo em um <span class="it">só lugar</span></h2>
         </div>
-        <p class="lead muted">Sua performance não termina quando o treino acaba. São três pilares que se conectam: treinar, recuperar e equilibrar.</p>
+        <p class="lead muted">Não é apenas sobre treinar: é ter uma estrutura inteira trabalhando pela sua evolução. São três pilares que se conectam.</p>
       </div>
 
       <div class="pilar">
-        <div class="pilar-cab"><h3 class="it">Treinar</h3><p>Musculação, spinning e funcional, com acompanhamento de treinadores.</p></div>
+        <div class="pilar-cab"><h3 class="it">Treinar</h3><p>Musculação, spinning e funcional, com acompanhamento de professores.</p></div>
         <ul class="indice">
-          <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Performance</span><span class="tipo">Musculação</span><div class="info"><p class="desc">Musculação personalizada com acompanhamento contínuo de treinadores. Você treina com um profissional ao lado, numa estrutura completa e dedicada à sua evolução.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Treino com treinador, até 6x por semana</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Avaliação física com bioimpedância InBody todo mês</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Água, pré-treino/creatina e whey pós-treino</li></ul><p class="acesso"><span>Como acessar</span>É a base de todos os planos Performance.</p></div></li>
+          <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Performance</span><span class="tipo">Musculação</span><div class="info"><p class="desc">Musculação personalizada com acompanhamento contínuo de professores. Mobilidade, estímulo metabólico e força organizados numa metodologia que faz sentido para você.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Treino com professor, até 6x por semana</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Avaliação física com bioimpedância InBody todo mês</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Água, pré-treino/creatina e whey pós-treino</li></ul><p class="acesso"><span>Como acessar</span>É a base de todos os planos Performance.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Flow</span><span class="tipo">Spinning</span><div class="info"><p class="desc">Spinning com alta energia, métricas de intensidade e músicas envolventes. Uma experiência imersiva SHIFT.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Métricas de intensidade durante a aula</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Vagas limitadas por aula</li></ul><p class="acesso"><span>Como acessar</span>1x por semana nos planos Performance. Também por aula avulsa ou pacotes de 4 e 12 aulas.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Move</span><span class="tipo">Funcional</span><div class="info"><p class="desc">Treinamento funcional focado em agilidade, força e mobilidade, complementando a musculação.</p><p class="acesso"><span>Como acessar</span>1x por semana nos planos Performance.</p></div></li>
         </ul>
       </div>
 
       <div class="pilar">
-        <div class="pilar-cab"><h3 class="it">Recuperar</h3><p>Tecnologia de recuperação e cuidado corporal para voltar melhor ao próximo treino.</p></div>
+        <div class="pilar-cab"><h3 class="it">Recuperar</h3><p>Recovery integrado à sua rotina de treino e ao seu histórico de evolução.</p></div>
         <ul class="indice">
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Recovery</span><span class="tipo">Recuperação</span><div class="info"><p class="desc">Recuperação muscular avançada com tecnologia <b>Therabody</b>. Desenvolvido para corredores, atletas e praticantes de atividades físicas que buscam acelerar a regeneração e prevenir lesões.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Botas de compressão pneumática</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Linha completa de equipamentos Therabody</li></ul><p class="acesso"><span>Como acessar</span>1x por mês nos planos Performance. Também em pacotes de 2 e 6 sessões.</p></div></li>
           <li><span class="display nome"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>SHIFT Care</span><span class="tipo">Fisioterapia</span><div class="info"><p class="desc">Fisioterapia preventiva, tratamento especializado e cuidados corporais. Seu momento de cuidado também está aqui.</p><ul class="det"><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Drenagem linfática e drenagem pós-operatória</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Massagem relaxante e liberação miofascial</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Limpeza de pele profunda</li><li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Ventosaterapia e pedras quentes</li></ul><p class="acesso"><span>Como acessar</span>Fisioterapeuta a cada 2 meses nos planos Performance e Casal. Demais serviços com horário e valor sob consulta.</p></div></li>
@@ -551,14 +591,14 @@
     </div>
   </section>
 
-  <section class="secao jornada" id="jornada">
+  <section class="secao jornada" id="metodo">
     <div class="wrap">
       <div class="cabeca">
         <div>
-          <p class="label">Sua jornada na SHIFT</p>
-          <h2 class="display h2">Cada etapa <span class="it">acompanhada</span> de perto</h2>
+          <p class="label">Método SHIFT</p>
+          <h2 class="display h2">O seu treino tem <span class="it">um porquê</span></h2>
         </div>
-        <p>Da primeira visita à reavaliação do mês, você sabe o que acontece em cada fase e quem está cuidando dela.</p>
+        <p>Uma jornada contínua entre avaliação, execução e evolução. Sem improviso. Sem piloto automático.</p>
       </div>
       <ol class="passos">
         <li class="passo">
@@ -568,20 +608,51 @@
         </li>
         <li class="passo">
           <span class="n">02</span>
-          <h3 class="display">Avaliação InBody</h3>
-          <p>A bioimpedância mostra a sua composição corporal. A avaliação se repete <b>todo mês</b>, então a evolução é medida, não estimada.</p>
+          <h3 class="display">Avaliação precisa</h3>
+          <p>Entendemos seu momento, seus objetivos e como seu corpo responde antes de prescrever qualquer movimento. Bioimpedância <b>InBody todo mês</b>.</p>
         </li>
         <li class="passo">
           <span class="n">03</span>
-          <h3 class="display">Treino acompanhado</h3>
-          <p>Musculação com treinador ao lado, <b>até 6x por semana</b> conforme o plano, somada ao SHIFT Flow e ao SHIFT Move toda semana.</p>
+          <h3 class="display">Treino inteligente</h3>
+          <p>Mobilidade, estímulo metabólico e força, com <b>professor ao lado</b> e até 6x por semana conforme o plano.</p>
         </li>
         <li class="passo">
           <span class="n">04</span>
           <h3 class="display">Cuidado integrado</h3>
-          <p>Recovery com Therabody <b>1x por mês</b>. Nos planos Performance e Casal, fisioterapeuta e nutricionista <b>a cada 2 meses</b>.</p>
+          <p>Flow e Move toda semana, Recovery com Therabody <b>1x por mês</b> e, nos planos Performance e Casal, fisioterapeuta e nutricionista <b>a cada 2 meses</b>.</p>
+        </li>
+        <li class="passo">
+          <span class="n">05</span>
+          <h3 class="display">Evolução mensurável</h3>
+          <p>Dados, frequência, cargas e avaliações no <b>Portal SHIFT</b> transformam percepção em progresso visível.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <section class="secao portal" id="portal">
+    <div class="wrap">
+      <div>
+        <p class="label">Evolução conectada</p>
+        <h2 class="display h2">Seus dados contam <span class="it">a sua história</span></h2>
+        <p class="lead">No Portal SHIFT, você acompanha treino, frequência, medidas, avaliações e agenda em um só lugar. Seu professor enxerga o mesmo caminho e ajusta o próximo passo.</p>
+        <ul>
+          <li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Plano de treino sempre atualizado</li>
+          <li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Histórico de cargas e avaliações InBody</li>
+          <li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Agenda de treino e recovery</li>
+        </ul>
+      </div>
+      <div class="tela" role="img" aria-label="Tela ilustrativa do Portal SHIFT com próximo treino, frequência e evolução de força">
+        <div class="tela-topo"><b>Portal SHIFT</b><span class="ex">Tela ilustrativa</span></div>
+        <div class="card"><span class="k">Próximo treino</span><span class="v">Performance B · Inferiores</span><span class="s">Terça, 7h · com seu professor</span></div>
+        <div class="cards2">
+          <div class="card"><span class="k">Frequência</span><span class="v">3 de 3</span><span class="s">treinos nesta semana</span></div>
+          <div class="card"><span class="k">Recovery</span><span class="v">Dia 18</span><span class="s">botas de compressão</span></div>
+        </div>
+        <div class="card"><span class="k">Evolução de carga · 8 semanas</span>
+          <div class="barras" aria-hidden="true"><i style="height:38%"></i><i style="height:44%"></i><i style="height:47%"></i><i style="height:52%"></i><i style="height:58%"></i><i style="height:63%"></i><i style="height:70%"></i><i style="height:78%"></i></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -612,7 +683,7 @@
           <p class="tag">Plano completo</p>
           <h3 class="display">Performance</h3>
           <p class="para">Treine com acompanhamento e uma estrutura completa dedicada à sua evolução.</p>
-          <dl class="item"><dt>Treino com treinador</dt><dd>Até 6x por semana</dd></dl>
+          <dl class="item"><dt>Treino com professor</dt><dd>Até 6x por semana</dd></dl>
           <dl class="item"><dt>Horário</dt><dd>Seg a sex, 6h–20h<br>Sáb, 8h–12h</dd></dl>
           <dl class="item"><dt>Fisioterapeuta</dt><dd>A cada 2 meses</dd></dl>
           <dl class="item"><dt>Nutricionista</dt><dd>A cada 2 meses</dd></dl>
@@ -622,7 +693,7 @@
           <p class="tag">Parceria &amp; evolução</p>
           <h3 class="display">Performance Casal</h3>
           <p class="para">Evoluir juntos torna a jornada ainda melhor. Mesmo padrão do plano completo.</p>
-          <dl class="item"><dt>Treino com treinador</dt><dd>Até 6x por semana</dd></dl>
+          <dl class="item"><dt>Treino com professor</dt><dd>Até 6x por semana</dd></dl>
           <dl class="item"><dt>Horário</dt><dd>Seg a sex, 6h–20h<br>Sáb, 8h–12h</dd></dl>
           <dl class="item"><dt>Fisioterapeuta</dt><dd>A cada 2 meses</dd></dl>
           <dl class="item"><dt>Nutricionista</dt><dd>A cada 2 meses</dd></dl>
@@ -632,7 +703,7 @@
           <p class="tag">Essencial Flex</p>
           <h3 class="display">Performance Flex</h3>
           <p class="para">Horário de menor fluxo, com total atenção da equipe e toda a infraestrutura.</p>
-          <dl class="item"><dt>Treino com treinador</dt><dd>Até 5x por semana</dd></dl>
+          <dl class="item"><dt>Treino com professor</dt><dd>Até 5x por semana</dd></dl>
           <dl class="item"><dt>Horário exclusivo</dt><dd>Seg a sex, 11h–16h</dd></dl>
           <dl class="item"><dt>Fisioterapeuta</dt><dd class="nao">—</dd></dl>
           <dl class="item"><dt>Nutricionista</dt><dd class="nao">—</dd></dl>
@@ -642,7 +713,7 @@
           <p class="tag">Essencial 3x</p>
           <h3 class="display">Performance 3x</h3>
           <p class="para">Sua semana. Seu ritmo. O mesmo padrão de excelência SHIFT.</p>
-          <dl class="item"><dt>Treino com treinador</dt><dd>Até 3x por semana</dd></dl>
+          <dl class="item"><dt>Treino com professor</dt><dd>Até 3x por semana</dd></dl>
           <dl class="item"><dt>Horário</dt><dd>Seg a sex, 6h–20h</dd></dl>
           <dl class="item"><dt>Fisioterapeuta</dt><dd class="nao">—</dd></dl>
           <dl class="item"><dt>Nutricionista</dt><dd class="nao">—</dd></dl>
@@ -700,8 +771,8 @@
     <div class="wrap">
       <div class="topo">
         <figure class="foto">
-          <svg class="marca" viewBox="280 110 950 1780" aria-hidden="true"><path d="M297 130 C600 400 900 690 1205 985 L297 1868 L299 1517 C560 1300 800 1140 1033 987 C780 830 540 660 297 471 Z"/></svg>
-          <figcaption>Foto · sala de convivência</figcaption>
+          <img src="assets/fotos/space.jpg" alt="Salão da SHIFT com o logo na parede e um professor acompanhando uma aluna no cross" width="1600" height="1066" loading="lazy">
+          <figcaption>O espaço SHIFT</figcaption>
         </figure>
         <div>
           <p class="label">Conforto também faz parte</p>
@@ -751,19 +822,19 @@
       <div class="cabeca">
         <div>
           <p class="label">Quem cuida de você</p>
-          <h2 class="display h2">Uma equipe <span class="it">multidisciplinar</span></h2>
+          <h2 class="display h2">Um time <span class="it">multidisciplinar</span></h2>
         </div>
-        <p>Treino, fisioterapia e nutrição conversam entre si. Cada profissional cuida de uma parte da sua evolução.</p>
+        <p>Treino, fisioterapia e nutrição trabalhando a partir do mesmo objetivo: o seu resultado.</p>
       </div>
       <figure class="foto">
-        <svg class="marca" viewBox="280 110 950 1780" aria-hidden="true"><path d="M297 130 C600 400 900 690 1205 985 L297 1868 L299 1517 C560 1300 800 1140 1033 987 C780 830 540 660 297 471 Z"/></svg>
-        <figcaption>Foto · equipe SHIFT (nomes e fotos a inserir)</figcaption>
+        <img src="assets/fotos/training-wide.jpg" alt="Professor da SHIFT corrigindo a postura de uma aluna em um avanço, com a parede de kettlebells ao fundo" width="1600" height="1066" loading="lazy">
+        <figcaption>Direção, correção e acompanhamento</figcaption>
       </figure>
       <div class="papeis">
         <div class="papel">
           <p class="label">SHIFT Performance</p>
-          <h3 class="display">Treinadores</h3>
-          <p>Acompanhamento contínuo durante o treino, com ajuste de exercícios e cargas ao seu objetivo.</p>
+          <h3 class="display">Professores</h3>
+          <p>Acompanhamento próximo em cada treino: atenção para corrigir, ajustar e fazer você avançar.</p>
         </div>
         <div class="papel">
           <p class="label">SHIFT Care</p>
@@ -806,6 +877,10 @@
           <summary>Qual a diferença entre o Flex e o 3x? <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></summary>
           <p>O Performance Flex tem treino até 5x por semana em um horário exclusivo, de segunda a sexta das 11h às 16h, com menor fluxo e total atenção da equipe. O Performance 3x tem treino até 3x por semana, de segunda a sexta das 6h às 20h.</p>
         </details>
+        <details id="faq-portal">
+          <summary>O que é o Portal SHIFT? <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></summary>
+          <p>É onde você acompanha o seu plano de treino, a frequência, as medidas, o histórico de cargas e avaliações e a agenda de treino e recovery. O seu professor vê as mesmas informações e ajusta o próximo passo.</p>
+        </details>
         <details id="faq-incluso">
           <summary>O que está incluso durante o treino? <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></summary>
           <p>Em todos os planos Performance: água mineral 500 ml, dose de pré-treino/creatina e dose de whey pós-treino.</p>
@@ -824,7 +899,7 @@
         </details>
         <details id="faq-local">
           <summary>Onde fica e como estacionar? <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></summary>
-          <p>Av. 9 de Julho, 1315, no Edifício Nine. Há estacionamento coberto no local e manobrista exclusivo.</p>
+          <p>Av. 9 de Julho, 1315, no Edifício Nine, em Jundiaí. Há estacionamento coberto no local e manobrista exclusivo.</p>
         </details>
         <details id="faq-valores">
           <summary>Quais são os valores? <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></summary>
@@ -846,9 +921,13 @@
           <li><svg class="chev" aria-hidden="true"><use href="#chev"/></svg>Apresentação dos planos e valores</li>
         </ul>
         <div class="onde">
-          <span>Av. 9 de Julho, 1315 · Edifício Nine</span>
+          <span>Av. 9 de Julho, 1315 · Edifício Nine · Jundiaí, SP</span>
           <span>Estacionamento coberto e manobrista no local</span>
           <span>Seg a sex, 6h–20h · Sáb, 8h–12h</span>
+          <div class="onde-links">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%209%20de%20Julho%2C%201315%2C%20Edif%C3%ADcio%20Nine%2C%20Jundia%C3%AD%20SP" target="_blank" rel="noopener">Como chegar <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></a>
+            <a href="https://www.instagram.com/shift.estudiojundiai/" target="_blank" rel="noopener">@shift.estudiojundiai <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></a>
+          </div>
         </div>
       </div>
       <form class="form" id="form-visita">
@@ -882,7 +961,7 @@
           </select>
         </div>
         <button class="btn btn-laranja" type="submit">Agendar pelo WhatsApp <svg class="chev" aria-hidden="true"><use href="#chev"/></svg></button>
-        <p class="rodape-f">Abre o WhatsApp com a mensagem pronta. A equipe da SHIFT confirma o horário.</p>
+        <p class="rodape-f">Abre o WhatsApp da SHIFT com a mensagem pronta. A equipe confirma o horário.</p>
       </form>
     </div>
   </section>
@@ -895,9 +974,9 @@
       <p class="it slogan">Onde mudar, é só o começo!</p>
     </div>
     <div class="meta">
-      <span>Av. 9 de Julho, 1315 · Edifício Nine</span>
-      <span>Protótipo · fotos do espaço e da equipe a inserir</span>
-      <span>Site e assistente por <a href="https://zetaflow.ia.br" target="_blank" rel="noopener">Zetaflow</a></span>
+      <span>Av. 9 de Julho, 1315 · Edifício Nine · Jundiaí, SP</span>
+      <span><a href="https://wa.me/5511990130543" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://www.instagram.com/shift.estudiojundiai/" target="_blank" rel="noopener">Instagram</a></span>
+      <span>Protótipo · site e assistente por <a href="https://zetaflow.ia.br" target="_blank" rel="noopener">Zetaflow</a></span>
     </div>
   </div>
 </footer>
@@ -918,9 +997,8 @@
 
 <script>
 (function () {
-  // WhatsApp da SHIFT: DDI 55 + DDD + número, só dígitos (ex.: 5511999999999).
-  // Vazio abre o WhatsApp para a pessoa escolher o contato.
-  var WHATSAPP = "";
+  // WhatsApp da SHIFT: DDI 55 + DDD + número, só dígitos.
+  var WHATSAPP = "5511990130543";
 
   var interesse = document.getElementById("f-interesse");
   document.querySelectorAll("[data-plano]").forEach(function (a) {
@@ -940,7 +1018,7 @@
     "Quais são os planos?": "São quatro planos Performance: o completo e o Casal, com treino até 6x por semana e fisioterapeuta e nutricionista a cada 2 meses; o Flex, com horário exclusivo das 11h às 16h; e o 3x, para quem treina até 3 vezes por semana. Os valores a equipe passa na visita ou pelo WhatsApp.",
     "Só consigo treinar no almoço": "Então o Performance Flex combina com você: horário exclusivo de segunda a sexta, das 11h às 16h, com menos movimento e atenção total da equipe. Treino até 5x por semana.",
     "Posso fazer só spinning?": "Pode. O SHIFT Flow tem aula avulsa e pacotes de 4 e de 12 aulas. A equipe te passa os valores pelo WhatsApp.",
-    "Tem estacionamento?": "Tem estacionamento coberto e manobrista exclusivo. A SHIFT fica na Av. 9 de Julho, 1315, no Edifício Nine.",
+    "Tem estacionamento?": "Tem estacionamento coberto e manobrista exclusivo. A SHIFT fica na Av. 9 de Julho, 1315, no Edifício Nine, em Jundiaí.",
     "O que é o Recovery?": "É recuperação muscular com botas de compressão pneumática e a linha completa Therabody. Já vem 1x por mês nos planos Performance, e também tem pacotes avulsos de 2 e de 6 sessões."
   };
   var painel = document.getElementById("ia-painel");
