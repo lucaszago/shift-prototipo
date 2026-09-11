@@ -192,7 +192,7 @@
   /* treinar certo */
   .exp { background: var(--carvao-2); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); padding-block: 0; }
   .exp-foto { position: relative; margin: 0; min-height: 100%; }
-  .exp-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 22%; }
+  .exp-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
   .selo {
     position: absolute; right: 0; bottom: 0;
     display: flex; align-items: center; gap: 16px;
@@ -372,7 +372,7 @@
   /* equipe */
   .equipe { background: var(--carvao-2); }
   .equipe-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
-  .equipe .foto { aspect-ratio: 4 / 5; }
+  .equipe .foto { aspect-ratio: 4 / 3; }
   .papeis { display: grid; gap: 28px; }
   .papel { border-top: 1px solid var(--linha); padding-top: 22px; display: grid; gap: 10px; align-content: start; }
   .papel h3 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
@@ -508,7 +508,7 @@
   /* ---------- responsivo ---------- */
   @media (max-width: 1180px) {
     .exp { grid-template-columns: 1fr; }
-    .exp-foto { aspect-ratio: 16 / 10; min-height: 0; }
+    .exp-foto { aspect-ratio: 4 / 3; min-height: 0; }
     .exp-txt { max-width: 760px; padding-inline: var(--gutter); }
   }
   @media (max-width: 1080px) {
@@ -606,7 +606,7 @@
 
   <section class="secao exp" id="experiencia">
     <figure class="exp-foto zoom">
-      <img src="assets/fotos/experience.jpg" alt="Aluna treinando na cadeira extensora com o professor da SHIFT ajustando o movimento" width="1400" height="933" loading="lazy">
+      <img src="assets/fotos/coaching.jpg" alt="Professor da SHIFT acompanhando uma aluna em um agachamento, com o logo da SHIFT na parede" width="1066" height="1600" loading="lazy">
       <figcaption class="selo"><svg class="chev" aria-hidden="true"><use href="#chev"/></svg><span>Mais presença.<br>Mais resultado.</span></figcaption>
     </figure>
     <div class="exp-txt">
@@ -906,7 +906,7 @@
       </div>
       <div class="equipe-grid">
       <figure class="foto zoom">
-        <img src="assets/fotos/coaching.jpg" alt="Professor da SHIFT acompanhando uma aluna em um agachamento no salão" width="933" height="1400" loading="lazy">
+        <img src="assets/fotos/detail.jpg" alt="Professor da SHIFT orientando a pegada de uma aluna no cross" width="1600" height="1066" loading="lazy">
         <figcaption>Direção, correção e acompanhamento</figcaption>
       </figure>
       <div class="papeis">
@@ -991,7 +991,7 @@
   </section>
 
   <section class="secao visita" id="visita">
-    <figure class="fundo zoom" aria-hidden="true"><img src="assets/fotos/detail.jpg" alt="" width="1400" height="933" loading="lazy"></figure>
+    <figure class="fundo zoom" aria-hidden="true"><img src="assets/fotos/training-wide.jpg" alt="" width="1400" height="933" loading="lazy"></figure>
     <div class="wrap">
       <div>
         <p class="label">SHIFT · Onde mudar é só o começo</p>
