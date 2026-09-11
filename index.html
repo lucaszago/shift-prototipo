@@ -137,11 +137,26 @@
   .foto figcaption::before { content: ""; width: 18px; height: 1.5px; background: var(--laranja); }
 
   /* ---------- hero ---------- */
-  .hero .wrap.grid {
-    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(32px, 5vw, 72px);
-    align-items: end;
-    padding-block: clamp(40px, 6vw, 88px) clamp(36px, 5vw, 64px);
+  .hero {
+    position: relative; overflow: hidden; isolation: isolate;
+    min-height: min(92vh, 900px);
+    display: flex; flex-direction: column; justify-content: flex-end;
   }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: -2;
+    width: 100%; height: 100%; object-fit: cover; object-position: 62% 38%;
+    animation: hero-zoom 1.8s cubic-bezier(.2, .75, .2, 1) both;
+  }
+  @keyframes hero-zoom { from { transform: scale(1.06); } to { transform: none; } }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(24, 18, 13, .94) 0%, rgba(24, 18, 13, .8) 34%, rgba(24, 18, 13, .22) 66%, rgba(24, 18, 13, .06) 100%),
+      linear-gradient(0deg, var(--carvao) 0%, rgba(33, 26, 20, 0) 34%);
+  }
+  .hero > .wrap { width: 100%; }
+  .hero-conteudo { padding-block: clamp(96px, 14vh, 160px) clamp(28px, 4vw, 48px); }
+  .hero-conteudo > div { max-width: 640px; }
   .hero h1 { font-size: clamp(3.6rem, 9vw, 8rem); margin-top: 22px; display: grid; }
   .hero h1 .w { display: block; animation: shift-in .9s cubic-bezier(.2, .75, .2, 1) both; }
   .hero h1 .w2 { animation-delay: .08s; }
@@ -150,7 +165,6 @@
   .hero .lead { margin-top: 28px; }
   .hero .slogan-it { margin-top: 18px; font-size: clamp(22px, 2.2vw, 28px); color: var(--laranja-txt); }
   .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 34px; }
-  .hero .foto { aspect-ratio: 4 / 5; }
 
   .fatos {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
@@ -325,9 +339,9 @@
 
   /* equipe */
   .equipe { background: var(--carvao-2); }
-  .equipe .foto { aspect-ratio: 21 / 8; margin-bottom: clamp(36px, 5vw, 56px); }
-  .equipe .foto img { object-position: center 35%; }
-  .papeis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .equipe-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .equipe .foto { aspect-ratio: 4 / 5; }
+  .papeis { display: grid; gap: 28px; }
   .papel { border-top: 1px solid var(--linha); padding-top: 22px; display: grid; gap: 10px; align-content: start; }
   .papel h3 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
   .papel p { color: var(--ferro); font-size: 15.5px; }
@@ -435,18 +449,22 @@
     .nav-links a:not(.btn) { display: none; }
   }
   @media (max-width: 900px) {
-    .hero .wrap.grid, .exp .wrap, .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
-    .hero .foto { aspect-ratio: 4 / 3; }
+    .exp .wrap, .chegada .topo, .visita .wrap, .duvidas .wrap, .portal .wrap, .cabeca, .menus, .total360 { grid-template-columns: 1fr; }
     .indice > li { grid-template-columns: 1fr; gap: 8px; }
     .indice .tipo { order: -1; }
     .papeis { grid-template-columns: 1fr; }
-    .equipe .foto { aspect-ratio: 16 / 9; }
+    .equipe-grid { grid-template-columns: 1fr; }
+    .equipe .foto { aspect-ratio: 4 / 3; }
     .galeria { height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
     .galeria .foto { aspect-ratio: 4 / 3; }
     .galeria .foto:first-child { grid-row: auto; grid-column: span 2; aspect-ratio: 16 / 10; }
   }
   @media (max-width: 640px) {
     body { font-size: 16px; }
+    .hero { min-height: 0; display: block; }
+    .hero-bg { position: relative; inset: auto; height: max(56vh, 320px); object-position: 70% 75%; }
+    .hero::before { bottom: auto; height: max(56vh, 320px); background: linear-gradient(0deg, var(--carvao) 0%, rgba(33, 26, 20, 0) 45%); }
+    .hero-conteudo { padding-top: 0; margin-top: -56px; }
     .fatos { grid-template-columns: 1fr; gap: 16px; }
     .planos, .passos, .momentos, .cards2 { grid-template-columns: 1fr; }
     .comum { grid-template-columns: 1fr; }
@@ -458,7 +476,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .hero h1 .w { animation: none; }
+    .hero h1 .w, .hero-bg { animation: none; }
     * { transition: none !important; }
   }
 </style>
@@ -488,7 +506,8 @@
 
 <main id="topo">
   <section class="hero">
-    <div class="wrap grid">
+    <img class="hero-bg" src="assets/fotos/training-wide.jpg" alt="Professor da SHIFT corrigindo a postura de uma aluna em um avanço, com a parede de kettlebells ao fundo" width="1400" height="933" fetchpriority="high">
+    <div class="wrap hero-conteudo">
       <div>
         <p class="label">Estúdio de musculação personalizado · Jundiaí</p>
         <h1 class="display"><span class="w w1">Não é</span><span class="w w2">academia.</span><span class="w w3">É SHIFT.</span></h1>
@@ -499,10 +518,6 @@
           <a class="btn btn-linha" href="#metodo">Conhecer o método</a>
         </div>
       </div>
-      <figure class="foto">
-        <img src="assets/fotos/coaching.jpg" alt="Professor da SHIFT acompanhando uma aluna em um agachamento no salão" width="1066" height="1600" fetchpriority="high">
-        <figcaption>Treino acompanhado</figcaption>
-      </figure>
     </div>
     <div class="wrap">
       <dl class="fatos">
@@ -826,8 +841,9 @@
         </div>
         <p>Treino, fisioterapia e nutrição trabalhando a partir do mesmo objetivo: o seu resultado.</p>
       </div>
+      <div class="equipe-grid">
       <figure class="foto">
-        <img src="assets/fotos/training-wide.jpg" alt="Professor da SHIFT corrigindo a postura de uma aluna em um avanço, com a parede de kettlebells ao fundo" width="1600" height="1066" loading="lazy">
+        <img src="assets/fotos/coaching.jpg" alt="Professor da SHIFT acompanhando uma aluna em um agachamento no salão" width="933" height="1400" loading="lazy">
         <figcaption>Direção, correção e acompanhamento</figcaption>
       </figure>
       <div class="papeis">
@@ -846,6 +862,7 @@
           <h3 class="display">Nutricionista</h3>
           <p>Acompanhamento nutricional alinhado aos seus objetivos de treino. Nos planos Performance e Casal, a cada 2 meses.</p>
         </div>
+      </div>
       </div>
     </div>
   </section>
